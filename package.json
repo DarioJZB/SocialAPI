@@ -1,0 +1,26 @@
+{
+    "name": "social-api",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "build": "npx tsc",
+        "start": "npm run build && node dist/server.js",
+        "dev": "nodemon src/server.ts"
+    },
+    "author": "DarioJZB",
+    "license": "MIT",
+    "version": "1.0.0",
+    "keywords": [],
+    "description": "",
+    "dependencies": {
+        "express": "^4.21.1",
+        "mongoose": "^8.8.0"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.9.0",
+        "nodemon": "^3.1.7",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.3"
+    }
+}
