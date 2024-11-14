@@ -4,7 +4,7 @@ interface IThought extends Document {
     thoughtText: string,
     createdAt: Date,
     username: string,
-    reactions: Types.ObjectId[]
+    reactions: IReaction[]
 }
 
 interface IReaction {
@@ -31,13 +31,9 @@ const reactionSchema = new Schema<IReaction>(
         },
         createdAt: {
             type: Date,
-            default: Date.now
+            default: () => Date.now()
         }
-    },
-    {
-        _id: false
-    }
-);
+    });
 
 const thoughtSchema = new Schema<IThought>(
     {

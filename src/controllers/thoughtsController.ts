@@ -82,14 +82,14 @@ export const createReaction = async (req: Request, res: Response) => {
     try {
         const reaction = await Thought.findOneAndUpdate(
             { _id: thoughtId },
-            { $addToSet: req.body },
+            { $push: { reactions: req.body } },
             { runValidators: true, new: true }
         );
         if (!reaction) {
             res.status(404).json({ message: 'Reaction does not exist' });
         }
         console.log(reaction);
-        res.json({ message: 'Reaction deleted successfully' });
+        res.json({ message: 'Reaction created successfully' });
     } catch (error: any) {
         res.status(500).json({ message: error.message });
     }
@@ -100,7 +100,7 @@ export const deleteReactionById = async (req: Request, res: Response) => {
     try {
         const deleteReaction = await Thought.findOneAndUpdate(
             { _id: thoughtId },
-            { $pull: { reaction: reactionId } },
+            { $pull: { reactions: { _id: reactionId } } },
             { runValidators: true, new: true }
         );
         if (!deleteReaction) {
