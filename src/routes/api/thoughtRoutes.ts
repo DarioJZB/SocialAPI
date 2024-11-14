@@ -7,7 +7,7 @@ import {
     getAllThoughts, 
     getThoughtById, 
     updateThought } 
-from '../../controllers/thoughtsController';
+from '../../controllers/thoughtsController.js';
 
 const router = Router();
 
